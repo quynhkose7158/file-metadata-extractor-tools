@@ -22,3 +22,10 @@ Errors are not caught. A missing path raises `OSError` through `extract_metadata
 - **Broken symlinks**: `lstat` succeeds where `stat` would raise; `is_symlink` is `True` and `size` is the path length.
 - **Bytes and `PathLike` inputs**: both accepted, matching `os.stat`.
 - **`ctime` semantics**: on POSIX this is inode-change time, on Windows it is creation time. The key is the same; the meaning is OS-dependent and not normalised here.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
