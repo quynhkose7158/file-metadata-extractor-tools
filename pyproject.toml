@@ -1,6 +1,6 @@
 [project]
 name = "file-metadata-extractor-tools"
-version = "0.1.0"
+version = "0.1.1"
 description = "Dict wrapper for os.stat returning size, timestamps, mode, uid, and gid"
 requires-python = ">=3.10"
 dependencies = []
